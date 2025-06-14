@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-nginx
+  template:
+    metadata:
+      labels:
+        app: devops-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: dkhan573/devops-nginx:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: devops-nginx
+  ports:
+    - port: 80
+      targetPort: 80
+  type: NodePort
