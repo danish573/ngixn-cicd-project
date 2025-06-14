@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-username/your-repo.git'  // Replace with your actual Git repo URL
+               git 'https://github.com/danish573/ngixn-cicd-project.git'
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 dir('k8s') {
-                    sh 'kubectl apply -f deployment.yaml'
+                    sh 'kubectl apply -f deployment.yml'
                 }
             }
         }
